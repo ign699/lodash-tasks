@@ -107,7 +107,7 @@ describe('Lodash training', function ()
             it('should return reverse wrapped array', function ()
             {
                 value = _(array).tap(interceptor).chain().reverse().value();
-                expect(value).to.eql([10, 8, 6, 4, 2]);
+                expect(value).to.eql([8, 6, 4, 2]);
             });
         });
 
@@ -122,12 +122,14 @@ describe('Lodash training', function ()
                 interceptor = params[1];
                 value = _(str).chain().lowerCase().thru(interceptor).value();
             });
+            
             it('should match types of passing elements', function ()
             {
                 expect(params).to.have.length(2);
                 expect(typeof str).to.eql('string');
                 expect(interceptor instanceof Function).to.eql(true);
             });
+            
             it('should return reverse wrapped array', function ()
             {
                 expect(value).to.eql(['roses are red']);
@@ -201,6 +203,7 @@ describe('Lodash training', function ()
                     {'name': 'Jack', 'age': 32},
                     {'name': 'Kate', 'age': 38, 'gender': 'female'}
                 ];
+                
                 params = datasets.prototypeChain(users);
                 obj = params[0];
                 wrapper = _(obj)
